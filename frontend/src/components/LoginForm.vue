@@ -36,7 +36,6 @@ export default {
   loginUser() {
     console.log('Авторизация:', this.login, this.password);
 
-    // Здесь пока фиктивная проверка, ты потом заменишь на реальный запрос
     const fakeUser = {
       lastName: 'Shcherbakova',
       firstName: 'Margarita',
@@ -46,10 +45,10 @@ export default {
       password: this.password
     };
 
-    // Сохраняем в localStorage
+    //localStorage
     localStorage.setItem('user', JSON.stringify(fakeUser));
 
-    // Переход на страницу профиля
+    //переход на страницу профиля
     this.$router.push('/profile');
   }
 }
@@ -57,7 +56,6 @@ export default {
 </script>
 
 <style scoped>
-/* Используй такие же стили, как в RegisterForm.vue */
 .wrapper {
   height: 100vh;
   display: flex;
