@@ -1,5 +1,42 @@
-# Vue 3 + Vite
+# User Registration and Authentication App
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## Описание
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+Vue-приложение позволяет пользователям:
+
+- Зарегистрироваться, указав ФИО, email, телефон и пароль  
+- Авторизоваться с помощью email или телефона и пароля  
+- Просматривать свои данные после входа  
+- Удалять свой профиль с отображением уведомления и перенаправлением на регистрацию  
+
+---
+
+## Frontend
+
+### Регистрация
+Поля формы:
+- Фамилия
+- Имя
+- Отчество
+- Email
+- Телефон
+- Пароль
+
+После успешной регистрации пользователь перенаправляется на форму входа.
+
+### Авторизация
+Вход осуществляется по:
+- Email **или** Телефону
+- Паролю
+
+После входа пользователь видит:
+- Все введённые при регистрации данные
+- Кнопку для удаления профиля
+
+### Удаление профиля
+После нажатия на кнопку **Delete Profile**:
+- Профиль удаляется из хранилища (`localStorage`)
+- Появляется сообщение об удалении
+- Через 5 секунд пользователь перенаправляется на страницу регистрации
+
+---
