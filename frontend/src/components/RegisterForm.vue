@@ -48,6 +48,46 @@ export default {
   },
   methods: {
     registerUser() {
+      if (!this.lastName || !this.firstName || !this.email || !this.phone || !this.password) {
+        alert("Пожалуйста, заполните все обязательные поля");
+        return;
+      }
+
+      const nameRegex = /^[А-Яа-яA-Za-z]{2,}$/;
+      const phoneRegex = /^\+7\s?\d{3}\s?\d{3}\s?\d{2}\s?\d{2}$/;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,}$/;
+
+      if (!nameRegex.test(this.lastName)) {
+        alert("Введите корректную фамилию (минимум 2 буквы, только буквы)");
+        return;
+      }
+
+      if (!nameRegex.test(this.firstName)) {
+        alert("Введите корректное имя (минимум 2 буквы, только буквы)");
+        return;
+      }
+
+      if (this.middleName && !nameRegex.test(this.middleName)) {
+        alert("Введите корректное отчество (минимум 2 буквы, только буквы)");
+        return;
+      }
+
+      if (!emailRegex.test(this.email)) {
+        alert("Введите корректный email");
+        return;
+      }
+
+      if (!phoneRegex.test(this.phone)) {
+        alert("Введите телефон в формате +7 000 000 00 00");
+        return;
+      }
+
+      if (!passwordRegex.test(this.password)) {
+        alert("Пароль должен быть минимум из 6 символов, включать строчные, ЗАГЛАВНЫЕ буквы, цифры и символы");
+        return;
+      }
+
       const userData = {
         lastName: this.lastName,
         firstName: this.firstName,
@@ -57,17 +97,16 @@ export default {
         password: this.password
       };
 
+      localStorage.setItem('user', JSON.stringify(userData));
+
       console.log('Registering:', userData);
-
-      //при успешной регистарции алерт
       alert('Registration successful! Please log in.');
-
-      //переключится на форму логина
       this.$emit('switch-to-login');
     }
   }
 };
 </script>
+
 
 <style scoped>
 .wrapper {
@@ -126,7 +165,7 @@ body {
   height: 100%;
   overflow: hidden;
   z-index: 1;
-  
+
 }
 
 .overlay {
@@ -146,7 +185,7 @@ body {
 .overlay-panel {
   text-align: center;
   padding: 0 40px;
-   margin-top: -30px; 
+   margin-top: -30px;
 }
 
 form {
@@ -155,7 +194,7 @@ form {
   flex-direction: column;
   padding: 0 50px;
   align-items: center;
-  margin-top: -150px; 
+  margin-top: -150px;
 }
 
 input {
@@ -203,3 +242,11 @@ button:hover {
   text-decoration: none;
 }
 </style>
+
+<!--  Поле	Значение-->
+<!--  Фамилия	Иванова-->
+<!--  Имя	Анна-->
+<!--  Отчество	Сергеевна-->
+<!--  Email	anna.ivanova@example.ru-->
+<!--  Телефон	+7 916 123 45 67-->
+<!--  Пароль	Abc123!-->

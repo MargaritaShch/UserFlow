@@ -1,7 +1,7 @@
 <template>
   <div class="profile-page" v-if="!isDeleted">
     <aside class="profile-info">
-      <h2>👤 Profile</h2>
+      <h2>Profile</h2>
       <p><strong>Last Name:</strong> {{ user.lastName }}</p>
       <p><strong>First Name:</strong> {{ user.firstName }}</p>
       <p><strong>Middle Name:</strong> {{ user.middleName }}</p>
@@ -19,7 +19,7 @@
     </main>
   </div>
   <div v-else class="deleted-message">
-    <h2>🗑️ Profile deleted. Redirecting to registration...</h2>
+    <h2>Profile deleted. Redirecting to registration...</h2>
   </div>
 </template>
 
@@ -31,9 +31,9 @@ export default {
       user: {},
       isDeleted: false,
       posts: [
-        { title: '🎉 New Feature: Profile View', content: 'You can now see your personal data here.' },
-        { title: '📢 Announcement', content: 'Stay tuned for upcoming updates in our platform.' },
-        { title: '✨ Tips', content: 'Use a strong password and keep your info up to date!' }
+        { title: 'New Feature: Profile View', content: 'You can now see your personal data here.' },
+        { title: 'Announcement', content: 'Stay tuned for upcoming updates in our platform.' },
+        { title: 'Tips', content: 'Use a strong password and keep your info up to date!' }
       ]
     };
   },
