@@ -86,7 +86,8 @@ export default {
 
 .profile-info button {
   margin-top: 20px;
-  padding: 10px 20px;
+  margin-left: 70px;
+  padding: 15px 20px;
   background-color: #fff;
   color: #ff4b2b;
   border: none;
@@ -94,6 +95,7 @@ export default {
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.3s ease;
+  font-size: 18px;
 }
 
 .profile-info button:hover {

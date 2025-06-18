@@ -32,28 +32,31 @@ export default {
       password: ''
     };
   },
- methods: {
-  loginUser() {
-    console.log('Авторизация:', this.login, this.password);
+  methods: {
+    loginUser() {
+      const storedUser = JSON.parse(localStorage.getItem('user'));
 
-    const fakeUser = {
-      lastName: 'Shcherbakova',
-      firstName: 'Margarita',
-      middleName: 'Vladimirovna',
-      email: this.login.includes('@') ? this.login : '',
-      phone: !this.login.includes('@') ? this.login : '',
-      password: this.password
-    };
+      if (!storedUser) {
+        alert('Пользователь не найден. Зарегистрируйтесь.');
+        return;
+      }
 
-    //localStorage
-    localStorage.setItem('user', JSON.stringify(fakeUser));
+      const loginMatches =
+          storedUser.email === this.login || storedUser.phone === this.login;
+      const passwordMatches = storedUser.password === this.password;
 
-    //переход на страницу профиля
-    this.$router.push('/profile');
+      if (loginMatches && passwordMatches) {
+        localStorage.setItem('user', JSON.stringify(storedUser));
+        this.$router.push('/profile');
+      } else {
+        alert('Неверный логин или пароль');
+      }
+    }
   }
-}
 };
 </script>
+
+
 
 <style scoped>
 .wrapper {
